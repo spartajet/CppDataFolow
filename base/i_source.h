@@ -9,6 +9,7 @@
 
 template<typename T>
 class i_source {
+public:
     virtual bool Post(T t) = 0;
 };
 

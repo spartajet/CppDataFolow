@@ -9,9 +9,15 @@
 
 #include "i_source.h"
 
-template<typename T>
+template<typename V>
 class i_target {
-    virtual bool link_to(i_source<T>* target) = 0;
+//    template <typename V>
+    using target_function=function<bool(V)>;
+
+    virtual bool set_target_function(function<bool(V)> function) = 0;
+//    bool link_to(typename i_source<V> *target) {
+//        return true;
+//    }
 };
 
 #endif //CPPDATAFOLOW_ITARGET_H
