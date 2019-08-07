@@ -23,7 +23,7 @@ class trans_form_block : public i_source<T>, public i_target<V> {
     using operate_function=function<V(T)>;
 private:
     operate_function f;
-    boost::lockfree::queue<T,boost::lockfree::capacity<4000>> source_queue;
+    boost::lockfree::queue<T,boost::lockfree::capacity<50000>> source_queue;
 //    i_source<V> target = nullptr;
     block_option option;
     threadpool *_pool = nullptr;

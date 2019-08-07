@@ -2,6 +2,11 @@ cmake_minimum_required(VERSION 3.14)
 project(CppDataFolow)
 
 set(CMAKE_CXX_STANDARD 17)
+
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--stack,999999")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /STACK:10000000")
+option(CMAKE_ENCODING_UTF8 "Use UTF-8 encoding internally." ON)
+
 set(BOOST_DIR "C:/boost_1_70_0")
 include_directories("C:\\boost_1_70_0")
 link_directories("C:\\boost_1_70_0\\stage\\lib")
