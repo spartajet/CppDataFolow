@@ -19,13 +19,10 @@ class action_block : public i_source<T> {
 private:
     operate_function f;
     boost::lockfree::queue<T> *source_queue;
-//    boost::lockfree::queue<T> source_queue;
 
     block_option option;
     threadpool *_pool = nullptr;
     std::atomic_bool _run{true}; //是否运行
-//    std::atomic_int _idl_number{0}; //当前空闲的线程数量
-//    vector<std::thread> _threads; //线程池中的线程
     std::thread _manage_thread; //管理线程
 public:
     /*
@@ -34,7 +31,6 @@ public:
     void manage() {
         vector<future<void>> futures;
         while (_run) {
-//            int queue_size = this->source_queue.
             if (this->source_queue->empty()) {
                 continue;
             }

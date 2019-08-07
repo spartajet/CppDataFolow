@@ -25,15 +25,12 @@ class trans_form_block : public i_source<T>, public i_target<V> {
 private:
     operate_function f;
     boost::lockfree::queue<T> *source_queue;
-//    boost::lockfree::queue<T> source_queue;
 
     i_source<V> *target = nullptr;
     function<bool(V)> target_function;
     block_option option;
     threadpool *_pool = nullptr;
     std::atomic_bool _run{true}; //是否运行
-//    std::atomic_int _idl_number{0}; //当前空闲的线程数量
-//    vector<std::thread> _threads; //线程池中的线程
     std::thread _manage_thread; //管理线程
 public:
     /*
@@ -42,7 +39,6 @@ public:
     void manage() {
         vector<future<V>> futures;
         while (_run) {
-//            int queue_size = this->source_queue.
             if (this->source_queue->empty()) {
                 continue;
             }
@@ -57,9 +53,9 @@ public:
             }
             for (auto &&future : futures) {
                 V v = future.get();
-//                if(this->target_function!= nullptr){
-                this->target_function(v);
-//                }
+                if (this->target_function) {
+                    this->target_function(v);
+                }
             }
         }
     }

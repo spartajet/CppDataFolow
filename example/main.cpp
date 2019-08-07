@@ -23,9 +23,9 @@ int main(int argc, char* argv[]){
         std::cout << "display action " << pow(d, 2) << std::endl;
     }, block_option{3, 200});
 //    operate_block.link_to(display_block);
-    operate_block.set_target_function([&display_block](double d) {
-        return display_block.Post(d);
-    });
+//    operate_block.set_target_function([&display_block](double d) {
+//        return display_block.Post(d);
+//    });
     for (int i = 0; i < 1000; ++i) {
         bool result = operate_block.Post(i);
         std::cout<<"post result:"<<result<<" "<<i<<std::endl;
