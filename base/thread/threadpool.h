@@ -77,7 +77,7 @@ public:
 	//空闲线程数量
 	int idlCount() { return _idlThrNum; }
 	//线程数量
-	int thrCount() { return _pool.size(); }
+	size_t thrCount() { return _pool.size(); }
 #ifndef THREADPOOL_AUTO_GROW
 private:
 #endif // !THREADPOOL_AUTO_GROW

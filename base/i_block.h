@@ -6,7 +6,8 @@
 #define CPPDATAFOLOW_I_BLOCK_H
 
 struct block_option{
-    int thread_size=4;
+    short thread_size=4;
+    short source_queue_capacity=128;
 };
 class i_block {
 
